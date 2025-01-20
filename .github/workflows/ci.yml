@@ -15,12 +15,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ameba-version: [v1.6.4]
-        include:
-          - { os: ubuntu-latest, crystal: latest }
-          - { os: ubuntu-latest, crystal: nightly }
-          - { os: macos-latest }
-          # - { os: windows-latest }
+        os: [ubuntu-latest, macos-latest]
+        crystal: [latest]
 
     steps:
       - name: Checkout code
@@ -60,11 +56,8 @@ jobs:
       fail-fast: false
       matrix:
         ameba-version: [v1.6.4]
-        include:
-          - { os: ubuntu-latest, crystal: latest }
-          - { os: ubuntu-latest, crystal: nightly }
-          - { os: macos-latest }
-          # - { os: windows-latest }
+        os: [ubuntu-latest, macos-latest]
+        crystal: [latest]
 
     steps:
       - name: Checkout code
