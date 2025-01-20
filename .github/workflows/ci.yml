@@ -55,9 +55,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        os: [ubuntu-latest]
+        crystal: [1.15.0]
         ameba-version: [v1.6.4]
-        os: [ubuntu-latest, macos-latest]
-        crystal: [latest]
 
     steps:
       - name: Checkout code
