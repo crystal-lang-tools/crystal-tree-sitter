@@ -10,7 +10,7 @@ module TreeSitter
       @@language_paths ||= begin
         languages = Hash(String, Path).new
         Config.parser_directories.each do |dir|
-          Dir[dir.join("**", "src", "grammar.json")].each do |grammar_path|
+          Dir[dir.join("*", "src", "grammar.json")].each do |grammar_path|
             languages[$2] = Path.new($1) if grammar_path =~ %r{(.*/tree\-sitter\-([\w\-_]+))/src/grammar.json\z}
           end
         end

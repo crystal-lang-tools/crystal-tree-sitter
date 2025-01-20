@@ -28,6 +28,32 @@ The code used in the [Using Parsers](https://tree-sitter.github.io/tree-sitter/u
 was ported as a spec test at [spec/tree_sitter_spec.cr](spec/tree_sitter_spec.cr), the API documentation is being
 ported as well, not yet on github-pages, but run `crystal doc` and have fun.
 
+```crystal
+require "tree_sitter"
+
+parser = TreeSitter::Parser.new("crystal")
+
+source = <<-CRYSTAL
+class Name
+end
+CRYSTAL
+
+tree = parser.parse nil, source
+
+query = TreeSitter::Query.new(parser.language, <<-SCM)
+(class_def) @class
+
+(constant) @constant
+SCM
+
+cursor = TreeSitter::QueryCursor.new(query)
+cursor.exec(tree.root_node)
+
+cursor.each_capture do |capture|
+  p capture
+end
+```
+
 ## Contributing
 
 1. Fork it (<https://github.com/crystal-lang-tools/crystal-tree-sitter/fork>)

@@ -66,6 +66,12 @@ module TreeSitter
       Capture.new(rule, Node.new(capture.node))
     end
 
+    def each_capture(& : Capture -> Nil)
+      while capture = next_capture
+        yield capture
+      end
+    end
+
     def to_unsafe
       @cursor
     end
