@@ -25,6 +25,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set up tree-sitter
+        uses: tree-sitter/setup-action/cli@v1
+        with:
+          tree-sitter-ref: latest
+
       - name: Set up Crystal
         uses: crystal-lang/install-crystal@v1
         with:
