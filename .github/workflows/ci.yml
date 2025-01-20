@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  lint:
+  specs:
     strategy:
       fail-fast: false
       matrix:
@@ -52,12 +52,33 @@ jobs:
       - name: Run Crystal specs
         run: crystal spec -p -s
 
+  lint:
+    strategy:
+      fail-fast: false
+      matrix:
+        ameba-version: [v1.6.4]
+        include:
+          - { os: ubuntu-latest, crystal: latest }
+          - { os: ubuntu-latest, crystal: nightly }
+          - { os: macos-latest }
+          - { os: windows-latest }
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Crystal
+        uses: crystal-lang/install-crystal@v1
+        with:
+          crystal: ${{matrix.crystal}}
+
       - name: Cache Ameba binary
         id: cache-ameba
         uses: actions/cache@v3
         with:
           path: bin/ameba
-          key: ${{ runner.os }}-ameba-${{ matrix.ameba-version }}-${{ matrix.crystal }}
+          key: ${{ matrix.os }}-ameba-${{ matrix.ameba-version }}-${{ matrix.crystal }}
 
       - name: Build Ameba
         if: steps.cache-ameba.outputs.cache-hit != 'true'
