@@ -4,8 +4,8 @@ module TreeSitter
       node.start_point.row == line_n || node.end_point.row == line_n
     end
 
-    def <(line : Int32) : Bool
-      node.end_point.row < line && node.start_point.row < line
+    def <(other : Int32) : Bool
+      node.end_point.row < other && node.start_point.row < other
     end
 
     def to_s(io : IO)

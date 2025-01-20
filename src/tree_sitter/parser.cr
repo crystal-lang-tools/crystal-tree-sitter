@@ -47,7 +47,7 @@ module TreeSitter
     end
 
     def parse?(old_tree : Tree?, io : IO) : Tree?
-      parse?(old_tree) do |index, pos|
+      parse?(old_tree) do |index, _pos|
         io.seek(index)
         io.getb_to_end
       end

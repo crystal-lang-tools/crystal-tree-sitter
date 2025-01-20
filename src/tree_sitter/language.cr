@@ -57,6 +57,7 @@ module TreeSitter
     end
 
     def injection_regex : Regex
+      # ameba:disable Lint/NotNil
       injection_regex?.not_nil!
     end
 
@@ -67,6 +68,7 @@ module TreeSitter
     end
 
     def highlight_query : Query
+      # ameba:disable Lint/NotNil
       highlight_query?.not_nil!
     end
 

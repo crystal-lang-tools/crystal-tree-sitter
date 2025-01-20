@@ -28,7 +28,7 @@ module TreeSitter
     # Start running a given query on a given node.
     #
     # Yield the capture name and the node
-    def exec(node : Node, &block)
+    def exec(node : Node, &)
       exec(node)
       loop do
         capture = next_capture

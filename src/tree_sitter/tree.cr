@@ -41,8 +41,8 @@ module TreeSitter
 
     # Write a DOT graph describing the syntax tree to the given file.
     def save_dot(file : Path | String)
-      File.open(file, "w") do |file|
-        save_dot(file)
+      File.open(file, "w") do |f|
+        save_dot(f)
       end
     end
 

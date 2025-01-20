@@ -15,8 +15,8 @@ module TreeSitter
     delegate column, to: @point
     delegate :column=, to: @point
 
-    def ==(tuple : Tuple(Int32, Int32))
-      @point.row == tuple[0] && @point.column == tuple[1]
+    def ==(other : Tuple(Int32, Int32))
+      @point.row == other[0] && @point.column == other[1]
     end
 
     # Returns the point as a tuple of {row, column}.

@@ -37,7 +37,7 @@ module TreeSitter
         capture = next_capture
         break if capture.nil?
 
-        capture_line = capture.node.end_point.row
+        _capture_line = capture.node.end_point.row
         if capture.includes_line?(expected_line)
           captures << capture
         else

@@ -50,7 +50,7 @@ end
 
 def compile_binding(parser : Parser)
   c_compiler = ENV["CC"]? || "cc"
-  built_obj = parser.dir.join("parser.o")
+  _built_obj = parser.dir.join("parser.o")
   built_lib = parser.dir.join("libtree-sitter-#{parser.name}.a")
 
   # FIXME: Check if the .c file is newer than the .o.

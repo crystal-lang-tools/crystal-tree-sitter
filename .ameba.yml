@@ -1,0 +1,9 @@
+Lint/NotNil:
+  Excluded:
+    - spec/*
+
+Documentation/DocumentationAdmonition:
+  Enabled: false
+
+Naming/BlockParameterName:
+  Enabled: false
