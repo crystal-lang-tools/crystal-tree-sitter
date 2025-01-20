@@ -18,8 +18,13 @@ module TreeSitter
     end
 
     private def self.load_config : Config
-      path = ENV["XDG_CONFIG_HOME"]? || Path.home.join(".config")
-      path = Path.new(path)
+      path : Path = begin
+        {% if flag?(:darwin) %}
+          ENV["XDG_CONFIG_HOME"]?.try { |f| Path.new(f) } || Path.home.join("Library", "Application Support")
+        {% else %}
+          ENV["XDG_CONFIG_HOME"]?.try { |f| Path.new(f) } || Path.home.join(".config")
+        {% end %}
+      end
 
       File.open(path.join("tree-sitter", "config.json")) do |fp|
         Config.from_json(fp)
