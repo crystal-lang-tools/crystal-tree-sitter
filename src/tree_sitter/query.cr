@@ -4,7 +4,7 @@ module TreeSitter
   # given node consists of a pair of parentheses containing two things: the node’s type,
   # and optionally, a series of other S-expressions that match the node’s children.
   class Query
-    @query : LibTreeSitter::TSQuery
+    @query : LibTreeSitter::TSQuery*
 
     # Create a new query from a string containing one or more S-expression
     # patterns. The query is associated with a particular language, and can

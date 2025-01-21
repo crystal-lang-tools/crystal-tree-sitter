@@ -44,7 +44,7 @@ module TreeSitter
       nil
     end
 
-    def self.load_shared_object(language_name : String, language_path : Path) : LibTreeSitter::TSLanguage
+    def self.load_shared_object(language_name : String, language_path : Path) : LibTreeSitter::TSLanguage*
       file_extension = {% if flag?(:darwin) %}
                          "dylib"
                        {% else %}
@@ -61,7 +61,7 @@ module TreeSitter
       ptr = LibC.dlsym(handle, "tree_sitter_#{language_name}")
       raise Error.new("Can't find symbol tree_sitter_#{language_name} at #{so_path}.") unless ptr
 
-      Proc(LibTreeSitter::TSLanguage).new(ptr, Pointer(Void).null).call
+      Proc(LibTreeSitter::TSLanguage*).new(ptr, Pointer(Void).null).call
     end
   end
 end

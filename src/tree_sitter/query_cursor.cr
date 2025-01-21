@@ -2,7 +2,7 @@ require "./capture"
 
 module TreeSitter
   class QueryCursor
-    @cursor : LibTreeSitter::TSQueryCursor
+    @cursor : LibTreeSitter::TSQueryCursor*
     property query : Query
 
     # Create a new cursor for executing a given query.

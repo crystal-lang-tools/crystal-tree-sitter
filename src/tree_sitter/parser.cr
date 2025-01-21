@@ -5,7 +5,7 @@ module TreeSitter
   # A `Parser` is a stateful object that can be assigned a `Language` and used to produce a `Tree`
   # based on some source code.
   class Parser
-    @parser : LibTreeSitter::TSParser
+    @parser : LibTreeSitter::TSParser*
 
     # Used on `Parser#parse` method, the 2 parameters are
     # - byte index

@@ -5,7 +5,7 @@ module TreeSitter
   # that indicate the structure of the source code. It can also be edited and used to produce a new
   # `Tree` in the event that the source code changes.
   class Tree
-    @tree : LibTreeSitter::TSTree
+    @tree : LibTreeSitter::TSTree*
 
     # :nodoc:
     protected def initialize(@tree)
