@@ -6,6 +6,7 @@ require "./tree_sitter/query"
 require "./tree_sitter/query_cursor"
 require "./tree_sitter/editor"
 require "./tree_sitter/range"
+require "./tree_sitter/predicate"
 
 private def calloc(n : LibC::SizeT, size : LibC::SizeT) : Pointer(Void)
   GC.malloc(n * size)
