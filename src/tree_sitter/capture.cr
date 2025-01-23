@@ -13,6 +13,10 @@ module TreeSitter
       node.to_s(io)
     end
 
+    def text(source : String) : String
+      node.text(source)
+    end
+
     def inspect(io : IO)
       io << "#<Capture "
       to_s(io)

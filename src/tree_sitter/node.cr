@@ -122,6 +122,13 @@ module TreeSitter
       io.write(bytes)
     end
 
+    def text(source : String) : String
+      start_pos = start_byte
+      end_pos = end_byte
+      slice = source.byte_slice(start_pos, end_pos - start_pos)
+      @@string_pool.get(slice)
+    end
+
     # :nodoc:
     def to_unsafe
       @node
