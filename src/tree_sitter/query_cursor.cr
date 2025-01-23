@@ -63,7 +63,7 @@ module TreeSitter
       capture = match.captures[capture_index]
       ptr = LibTreeSitter.ts_query_capture_name_for_id(@query, capture.index, out strlen)
       rule = TreeSitter.string_pool.get(ptr, strlen)
-      Capture.new(rule, Node.new(capture.node))
+      Capture.new(rule, Node.new(capture.node), capture_index)
     end
 
     def each_capture(& : Capture -> Nil)

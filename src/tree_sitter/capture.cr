@@ -1,5 +1,5 @@
 module TreeSitter
-  record Capture, rule : String, node : Node do
+  record Capture, rule : String, node : Node, capture_index : UInt32 do
     def includes_line?(line_n : Int32) : Bool
       node.start_point.row == line_n || node.end_point.row == line_n
     end
